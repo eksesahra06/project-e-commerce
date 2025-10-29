@@ -1,4 +1,10 @@
 ﻿<?php 
+session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: login.php?pesan=harus_login");
+    exit;
+}
+
 $koneksi = new mysqli("localhost","root","","db_ecommerce");
 ?>
 
@@ -7,7 +13,7 @@ $koneksi = new mysqli("localhost","root","","db_ecommerce");
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>cemil's admin page</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -29,12 +35,12 @@ $koneksi = new mysqli("localhost","root","","db_ecommerce");
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a> 
+                <a class="navbar-brand" href="index.php">Cemil's Admin</a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"> &nbsp; <a href="logout.php" class="btn btn-danger square-btn-adjust" onclick="return confirm('Yakin ingin keluar?')">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -48,7 +54,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     <li><a href="index.php?halaman=produk"><i class="fa fa-dashboard fa-3x"></i> Produk</a></li>
                     <li><a href="index.php?halaman=pembelian"><i class="fa fa-dashboard fa-3x"></i> Pembelian</a></li>
                     <li><a href="index.php?halaman=pelanggan"><i class="fa fa-dashboard fa-3x"></i> Pelanggan</a></li>	
-                    <li><a href="index.php?halaman=logout"><i class="fa fa-dashboard fa-3x"></i> Logout</a></li>				
                 </ul>
                
             </div>
@@ -76,6 +81,18 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     {
                         include 'detail.php';
                     }
+                    elseif ($_GET['halaman']=="tambahproduk")
+                    {
+                        include 'tambahproduk.php';
+                    }
+                    elseif ($_GET['halaman']=="hapusproduk")
+                    {
+                        include 'hapusproduk.php';
+                    }
+                    elseif ($_GET['halaman']=="ubahproduk")
+                    {
+                        include 'ubahproduk.php';
+                    }
                 }
                 else
                 {
@@ -99,8 +116,6 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
      <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
       <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
-    
-   
+    <script src="assets/js/custom.js"></script> 
 </body>
 </html>
