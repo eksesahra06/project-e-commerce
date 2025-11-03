@@ -38,7 +38,7 @@ Website ini berfokus pada penjualan **snack lokal** yang mudah digunakan, baik o
 | ------------------- | ------------------------ |
 | Frontend            | HTML, CSS, JavaScript    |
 | Backend             | PHP                      |
-| Database (Opsional) | MySQL                    |
+| Database            | MySQL                    |
 | Web Server          | XAMPP                    |
 
 ---
